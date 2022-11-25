@@ -2,6 +2,7 @@ package Kodlama.io.Devs2.kodlama.io.business.concretes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ import Kodlama.io.Devs2.kodlama.io.entities.concretes.Language;
 @Service
 public class LanguageManager implements LanguageService {
 	private LanguageRepository languageRepository;
+	
 
 	public LanguageManager(LanguageRepository languageRepository) {
 		this.languageRepository = languageRepository;
@@ -45,23 +47,47 @@ public class LanguageManager implements LanguageService {
 	}
 
 	@Override
-	public Language getById(int id) {
-
-		return languageRepository.getById(id);
+	public void update(UpdateLanguageRequest updateLanguageRequest,int id) throws Exception {
+		
+		Optional<Language> optional=languageRepository.findById(id);
+		if(optional.isEmpty()) {
+			throw new Exception("Hata");
+			
+		}
+		if(optional.isEmpty()) {
+			Language language= optional.get();
+			language.setName(updateLanguageRequest.getName());
+			languageRepository.save(language);
+			
+			
+		}
+		
 	}
 
 	@Override
-	public void update(UpdateLanguageRequest updateLanguageRequest) {
-
-		Language language = languageRepository.getById(updateLanguageRequest.getId());
-		language.setName(updateLanguageRequest.getName());
-		languageRepository.save(language);
-
+	public GetAllLanguageResponses getOne(int id) {
+		
+		Optional<Language> optional=languageRepository.findById(id);
+		if(optional.isPresent()) {
+			GetAllLanguageResponses getAllLanguageResponses=new GetAllLanguageResponses();
+			Language language= optional.get();
+			getAllLanguageResponses.setName(language.getName());
+			getAllLanguageResponses.setId(language.getId());
+			return getAllLanguageResponses;
+		}
+		
+		return null;
 	}
 
+	
+	
 	@Override
-	public void delete(DeleteLanguageRequest deleteLanguageRequest) {
-		languageRepository.deleteById(deleteLanguageRequest.getId());
+	public void delete(DeleteLanguageRequest deleteLanguageRequest,int id) {
+	
+	this.languageRepository.deleteById(id);
+		
 	}
+
+
 
 }

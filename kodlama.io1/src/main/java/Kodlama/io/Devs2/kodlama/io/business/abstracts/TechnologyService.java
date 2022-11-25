@@ -6,16 +6,15 @@ import Kodlama.io.Devs2.kodlama.io.business.request.technology.CreateTechnologyR
 import Kodlama.io.Devs2.kodlama.io.business.request.technology.DeleteTechnologyRequest;
 import Kodlama.io.Devs2.kodlama.io.business.request.technology.UpdateTechonologyRequest;
 import Kodlama.io.Devs2.kodlama.io.business.responses.GetAllTechnologyResponses;
-import Kodlama.io.Devs2.kodlama.io.entities.concretes.Technology;
 
 public interface TechnologyService {
 
 	List<GetAllTechnologyResponses> getAll();
-	Technology getById(int id);
-	void add(CreateTechnologyRequest createTechnologyRequest);
 	
-	void update(UpdateTechonologyRequest updateTechonologyRequest);
-	void delete(DeleteTechnologyRequest deleteTechnologyRequest);
+	void add(CreateTechnologyRequest createTechnologyRequest);
+	void update(UpdateTechonologyRequest updateTechonologyRequest,int id) throws Exception;
+	void delete(DeleteTechnologyRequest deleteTechnologyRequest,int id);
+	GetAllTechnologyResponses getOne(int id);
 	
 	
 	

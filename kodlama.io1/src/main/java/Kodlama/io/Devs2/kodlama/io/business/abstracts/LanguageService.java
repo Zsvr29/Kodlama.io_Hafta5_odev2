@@ -6,18 +6,17 @@ import Kodlama.io.Devs2.kodlama.io.business.request.language.CreateLanguageReque
 import Kodlama.io.Devs2.kodlama.io.business.request.language.DeleteLanguageRequest;
 import Kodlama.io.Devs2.kodlama.io.business.request.language.UpdateLanguageRequest;
 import Kodlama.io.Devs2.kodlama.io.business.responses.GetAllLanguageResponses;
-import Kodlama.io.Devs2.kodlama.io.entities.concretes.Language;
 
 public interface LanguageService {
 	
     List<GetAllLanguageResponses> getAll();
-    Language getById(int id);
-    void add(CreateLanguageRequest createLanguageRequest);
+  
+   void add(CreateLanguageRequest createLanguageRequest);
+   void update(UpdateLanguageRequest updateLanguageRequest,int id) throws Exception;
+   void delete(DeleteLanguageRequest deleteLanguageRequest,int id);
+   GetAllLanguageResponses getOne(int id);
    
-   
-	void update(UpdateLanguageRequest updateLanguageRequest);
-	void delete(DeleteLanguageRequest deleteLanguageRequest);
-    
+
     
     
    

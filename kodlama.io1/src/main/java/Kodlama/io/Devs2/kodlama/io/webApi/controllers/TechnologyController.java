@@ -37,13 +37,19 @@ public class TechnologyController {
 		this.technologyService.add(createTechnologyRequest);
 	}
 	@PutMapping("/update")
-	public void update(UpdateTechonologyRequest updateTechonologyRequest) {
-		this.technologyService.update(updateTechonologyRequest);
+	public void update(UpdateTechonologyRequest updateTechonologyRequest,int id) throws Exception {
+		this.technologyService.update(updateTechonologyRequest,id);
 	}
 	
+	@GetMapping("/id")
+		GetAllTechnologyResponses getOne(int id) {
+			return this.technologyService.getOne(id);
+		}
+		
+	
 	@DeleteMapping("/delete")
-	public void delete(DeleteTechnologyRequest deleteTechnologyRequest) {
-		this.technologyService.delete(deleteTechnologyRequest);
+	public void delete(DeleteTechnologyRequest deleteTechnologyRequest,int id) {
+		this.technologyService.delete(deleteTechnologyRequest,id);
 		
 		
 	}

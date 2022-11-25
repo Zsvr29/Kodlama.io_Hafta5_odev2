@@ -15,7 +15,6 @@ import Kodlama.io.Devs2.kodlama.io.business.request.language.CreateLanguageReque
 import Kodlama.io.Devs2.kodlama.io.business.request.language.DeleteLanguageRequest;
 import Kodlama.io.Devs2.kodlama.io.business.request.language.UpdateLanguageRequest;
 import Kodlama.io.Devs2.kodlama.io.business.responses.GetAllLanguageResponses;
-import Kodlama.io.Devs2.kodlama.io.entities.concretes.Language;
 
 @RestController
 @RequestMapping("/api/languages")
@@ -36,23 +35,29 @@ public class LanguagesController {
    public void add(CreateLanguageRequest createLanguageRequest) {
 		this.languageService.add(createLanguageRequest);
 	}
-	@GetMapping("/getById")
-	public Language getById(int id) {
+	
+	
+	@GetMapping("/id")
+	 GetAllLanguageResponses getOne(int id) {
 		
-		return languageService.getById(id);
+		return languageService.getOne(id);
 	}
 	
+	
+	
 	@PutMapping("/update")
-	public void update(UpdateLanguageRequest updateLanguageRequest) {
-	this.languageService.update(updateLanguageRequest);
+	public void update(UpdateLanguageRequest updateLanguageRequest,int id) throws Exception {
+	this.languageService.update(updateLanguageRequest,id);
 
 }
+	
 	@DeleteMapping("/delete")
-	public void delete(DeleteLanguageRequest deleteLanguageRequest) {
-		languageService.delete(deleteLanguageRequest);
-	}
+	public void delete(DeleteLanguageRequest deleteLanguageRequest,int id) {
+		
+	this.languageService.delete(deleteLanguageRequest,id);
+	
 
 }
 
-
+}
 

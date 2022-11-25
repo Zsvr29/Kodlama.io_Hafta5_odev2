@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -33,9 +34,9 @@ public class Language {
 	private int id;
 	@Column(name="name")
 	private String name;
-	@OneToMany
-	@JoinColumn(name="language_id")
-	 private List<Language> languages;
 	
-
+	@OneToMany 
+	private List<Technology> technology;
+	
+	
 }
