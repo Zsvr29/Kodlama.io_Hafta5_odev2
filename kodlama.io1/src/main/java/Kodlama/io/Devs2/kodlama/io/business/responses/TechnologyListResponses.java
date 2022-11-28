@@ -5,11 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class GetAllLanguageResponses {
+@AllArgsConstructor
+public class TechnologyListResponses {
+	
 	private int id;
 	private String name;
-	
 
 }

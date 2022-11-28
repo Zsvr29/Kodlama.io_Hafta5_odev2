@@ -6,6 +6,8 @@ import Kodlama.io.Devs2.kodlama.io.business.request.technology.CreateTechnologyR
 import Kodlama.io.Devs2.kodlama.io.business.request.technology.DeleteTechnologyRequest;
 import Kodlama.io.Devs2.kodlama.io.business.request.technology.UpdateTechonologyRequest;
 import Kodlama.io.Devs2.kodlama.io.business.responses.GetAllTechnologyResponses;
+import Kodlama.io.Devs2.kodlama.io.business.responses.TechnologyListResponses;
+import Kodlama.io.Devs2.kodlama.io.entities.concretes.Technology;
 
 public interface TechnologyService {
 
@@ -16,6 +18,10 @@ public interface TechnologyService {
 	void delete(DeleteTechnologyRequest deleteTechnologyRequest,int id);
 	GetAllTechnologyResponses getOne(int id);
 	
+	
+	Technology getTechnologyById(int id); // language managerdan teknolojı servıse erısıp id ye gore teknolojı almak için.
+	
+	   List<TechnologyListResponses> getTecnologyAll();
 	
 	
 	}
